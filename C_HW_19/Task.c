@@ -1,4 +1,4 @@
-#include <stdio.h>
+п»ї#include <stdio.h>
 #include <locale.h>
 
 typedef struct {
@@ -20,13 +20,13 @@ int main() {
     int n = 5;
     Album arr[10];
 
-    printf("Ввод альбомов:\n");
+    printf("Р’РІРѕРґ Р°Р»СЊР±РѕРјРѕРІ:\n");
     for (int i = 0; i < n; i++) {
-        printf("\n=== Альбом %d ===\n", i + 1);
+        printf("\n=== РђР»СЊР±РѕРј %d ===\n", i + 1);
         input_album(&arr[i]);
     }
 
-    printf("\nВсе альбомы:\n");
+    printf("\nР’СЃРµ Р°Р»СЊР±РѕРјС‹:\n");
     for (int i = 0; i < n; i++) {
         print_album(arr[i]);
     }
@@ -34,7 +34,7 @@ int main() {
     print_suitable_albums(arr, n);
 
     if (writefile("albums.txt", arr, n)) {
-        printf("\nФайл успешно записан.\n");
+        printf("\nР¤Р°Р№Р» СѓСЃРїРµС€РЅРѕ Р·Р°РїРёСЃР°РЅ.\n");
     }
 
     return 0;
@@ -42,32 +42,32 @@ int main() {
 
 
 void input_album(Album* a) {
-    printf("Введите название (без пробелов, используйте _ ): ");
+    printf("Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ (Р±РµР· РїСЂРѕР±РµР»РѕРІ, РёСЃРїРѕР»СЊР·СѓР№С‚Рµ _ ): ");
     scanf("%99s", (*a).title);
 
-    printf("Введите год выпуска: ");
+    printf("Р’РІРµРґРёС‚Рµ РіРѕРґ РІС‹РїСѓСЃРєР°: ");
     scanf("%d", &(*a).year);
 
-    printf("Введите стиль (без пробелов): ");
+    printf("Р’РІРµРґРёС‚Рµ СЃС‚РёР»СЊ (Р±РµР· РїСЂРѕР±РµР»РѕРІ): ");
     scanf("%49s", (*a).style);
 
-    printf("Введите количество треков: ");
+    printf("Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ С‚СЂРµРєРѕРІ: ");
     scanf("%d", &(*a).tracks);
 
-    printf("Введите длительность (минуты): ");
+    printf("Р’РІРµРґРёС‚Рµ РґР»РёС‚РµР»СЊРЅРѕСЃС‚СЊ (РјРёРЅСѓС‚С‹): ");
     scanf("%lf", &(*a).duration);
 }
 
 void print_album(const Album a) {
-    printf("\nНазвание: %s\n", a.title);
-    printf("Год выпуска: %d\n", a.year);
-    printf("Стиль: %s\n", a.style);
-    printf("Количество треков: %d\n", a.tracks);
-    printf("Длительность: %.2f минут\n", a.duration);
+    printf("\nРќР°Р·РІР°РЅРёРµ: %s\n", a.title);
+    printf("Р“РѕРґ РІС‹РїСѓСЃРєР°: %d\n", a.year);
+    printf("РЎС‚РёР»СЊ: %s\n", a.style);
+    printf("РљРѕР»РёС‡РµСЃС‚РІРѕ С‚СЂРµРєРѕРІ: %d\n", a.tracks);
+    printf("Р”Р»РёС‚РµР»СЊРЅРѕСЃС‚СЊ: %.2f РјРёРЅСѓС‚\n", a.duration);
 }
 
 void print_suitable_albums(const Album arr[], int n) {
-    printf("\nПодходящие альбомы:\n");
+    printf("\nРџРѕРґС…РѕРґСЏС‰РёРµ Р°Р»СЊР±РѕРјС‹:\n");
 
     int found = 0;
     for (int i = 0; i < n; i++) {
@@ -78,14 +78,14 @@ void print_suitable_albums(const Album arr[], int n) {
     }
 
     if (!found) {
-        printf("Нет подходящих альбомов.\n");
+        printf("РќРµС‚ РїРѕРґС…РѕРґСЏС‰РёС… Р°Р»СЊР±РѕРјРѕРІ.\n");
     }
 }
 
 int writefile(const char* fname, const Album* arr, int size) {
     FILE* out = fopen(fname, "wt");
     if (out == NULL) {
-        printf("Ошибка открытия файла!\n");
+        printf("РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р°!\n");
         return 0;
     }
 
